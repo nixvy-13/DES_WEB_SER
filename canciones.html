@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="canciones.php" method="get">
+        <label for="texto">Texto a buscar: </label>
+        <input type="text" name="cancion"><br><br>
+        <label>
+            <input type="radio" name="opcion" value="Titulos">
+            Titulos
+        </label>
+        <label>
+            <input type="radio" name="opcion" value="Albumes">
+            Albumes
+        </label>
+        <label>
+            <input type="radio" name="opcion" value="Ambos">
+            Ambos
+        </label><br><br>
+        <select name="genero">
+            <option value="todos">Todos</option>
+            <option value="metal">Metal</option>
+            <option value="rock">Rock</option>
+            <option value="grunge">Grunge</option>
+        </select><br><br>
+        <button>Buscar</button>
+    </form>
+</body>
+</html>
