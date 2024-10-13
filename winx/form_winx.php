@@ -1,5 +1,5 @@
     <?php
-    session_start();
+session_start();
 if (!isset($_SESSION['personajes_pts'])) {
     $_SESSION['personajes_pts'] = array(
         "Bloom" => 0,
@@ -23,7 +23,7 @@ $gusto_error = "";
     if(isset($_POST['confirmar'])){
         $resultado_final = true;
     }
-    if (isset($_POST["nombre"]) || isset($_POST["triste"]) || isset($_POST["asignaturas"]) || isset($_POST["estacion"])){
+    if (isset($_POST["nombre"]) || isset($_POST["triste"]) || isset($_POST["asignaturas"]) || isset($_POST["estacion"])){   
         if (!empty($_POST["nombre"])){
             $nombre = $_POST["nombre"];
             $check_nombre = true;
@@ -250,7 +250,7 @@ $gusto_error = "";
             <button type="submit" name="reset">Borrar</button>
         </form>
         ';
-    }
+    }   
 
     ?>
     <!DOCTYPE html>
@@ -306,6 +306,9 @@ $gusto_error = "";
         echo '<form action="form_winx.php" method="post">
                 <button type="submit" name="confirmar">Confirmar Datos</button>
               </form>';
+              echo '<form action="form_winx.php" method="post">
+            <button type="submit" name="reset">Volver al formulario</button>
+          </form>';
     }
     else if (isset($resultado_final) && $resultado_final) {
         // Mostrar mensaje de agradecimiento si se confirma
