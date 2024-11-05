@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,23 +13,23 @@
     <p>Modifique el stock del producto que quiera modificar: </p>
     <?php
 
-    define("RUTA_STOCK_HELADOS", "stockHeladeria.data");
+    define("RUTA_STOCK_FRED", "stockFred.data");
 
-    if (file_exists(RUTA_STOCK_HELADOS)) {
-        $stock = unserialize(file_get_contents(RUTA_STOCK_HELADOS));
+    if (file_exists(RUTA_STOCK_FRED)) {
+        $stock = unserialize(file_get_contents(RUTA_STOCK_FRED));
     } else {
         $stock = [
-            "Chocolate" => 28,
-            "Pistacho" => 20,
-            "Caramelo" => 23,
-            "M&Ms" => 52,
-            "Lotus" => 41,
-            "Oreo" => 45,
-            "Fresa" => 31,
-            "Kiwi" => 38
+            "Pan" => 20,
+            "Perla" => 15,
+            "Sandia" => 23,
+            "Pocion" => 30,
+            "Libro" => 9,
+            "Cubo" => 16,
+            "Hierro" => 17,
+            "Zanahoria" => 22
         ];
 
-        file_put_contents(RUTA_STOCK_HELADOS, serialize($stock));
+        file_put_contents(RUTA_STOCK_FRED, serialize($stock));
     
     }
 
@@ -50,7 +51,7 @@
             }
         }
 
-        file_put_contents(RUTA_STOCK_HELADOS, serialize($stock));
+        file_put_contents(RUTA_STOCK_FRED, serialize($stock));
     }
 
     ?>
@@ -65,12 +66,21 @@
     
     echo $mensaje . "<br>";
 
+    if($_SESSION['administrador']){
+        echo '<input type="submit" name="actualizar" value="Actualizar Stock">';
+    }else{
+        echo '<a href="autenticacion.php">Inicia Sesion</a>'; 
+    }   
     ?>
-
-    <input type="submit" name="actualizar" value="Actualizar Stock">
-
     </form>
-
+    <?php 
+    if($_SESSION['autenticado']){
+        echo '<form action="autenticacion.php" method="post">
+        <input type="submit" name="cierre_sesion" value="cerrar_sesion">
+        </form>';
+    }
+    ?>
+    <a href="carritoAvanzado.php">Compra</a>
 </body>
 
 </html>

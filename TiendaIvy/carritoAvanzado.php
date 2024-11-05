@@ -189,15 +189,33 @@
         
         echo "<p>$mensaje</p>";
 
-        ?>
-        <input type="submit" name="actualizar" value="Actualizar">
+        if($_SESSION['autenticado']){
+            echo '<input type="submit" name="actualizar" value="Actualizar">';
 
-        <input type="submit" name="comprar" value="Ejecutar comprar">
+            echo '<input type="submit" name="comprar" value="Ejecutar comprar">';
+
+        }else{
+            echo '<a href="autenticacion.php">Inicia Sesion</a>';
+        }
+        ?>
+
 
     </form>
+    <?php 
+    if($_SESSION['autenticado']){
+        echo '<form action="autenticacion.php" method="post">
+        <input type="submit" name="cierre_sesion" value="cerrar_sesion">
+        </form>';
+    }
+    ?>
+        <br>
+    <?php
+        if($_SESSION['administrador']){
+            echo '<a href="carritoAdmin">Gestion</a>';
+        }
+    ?>
 </body>
 </html>
-
 
 
 <?php 
