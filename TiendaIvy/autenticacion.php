@@ -70,6 +70,11 @@ if (!file_exists("usuarios.data")) {
             echo "<p>Error: archivo de usuarios no encontrado.</p>";
         }
     }
+    if($_SESSION['autenticado']){
+        echo '<form action="autenticacion.php" method="post">
+        <input type="submit" name="cierre_sesion" value="cerrar_sesion">
+        </form>';
+    }
     ?>
 </body>
 </html>
